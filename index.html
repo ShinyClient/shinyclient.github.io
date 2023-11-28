@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shiny - A Minecraft Launcher</title>
+    <meta name="description"
+        content="Enhance your Minecraft experience with Shiny - a custom launcher offering mods, performance boosts, resource packs, and community integration. Download now" />
+    <meta name="keywords"
+        content="Shiny, Shiny Client, Shiny Launcher, shiny, Hypixel, Skyblock, Hypixel Skyblock, Minecraft, launcher, mods, resource packs, gaming, community integration" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="CoderFury" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-white font-sans select-none" role="document">
+    <div class="flex flex-col min-h-screen" role="main">
+        <header class="bg-blue-500 text-white py-4" role="banner">
+            <div class="container mx-auto flex items-center justify-between px-4">
+                <h1 class="text-3xl font-bold">Shiny</h1>
+                <span class="text-sm" id="latestVersion">Loading...</span>
+            </div>
+        </header>
+
+        <main class="flex-grow container mx-auto py-8" role="main">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-4 fadeInAnimation" role="article">
+                    <h2 class="text-2xl font-semibold mb-4">Welcome to Shiny!</h2>
+                    <p class="text-gray-700">
+                        Shiny is a custom Minecraft launcher designed to enhance your
+                        gaming experience. Experience a new level of gameplay with our
+                        features!
+                    </p>
+                </div>
+                <div class="p-4 flex items-center justify-center fadeInAnimation" role="complementary">
+                    <div>
+                        <!-- Update the button text and link here -->
+                        <a href="#" id="downloadButton"
+                            class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full shadow-md transition duration-300 ease-in-out inline-block">
+                            Download for Windows
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 p-4 border-t border-gray-300 fadeInAnimation" role="region">
+                <h2 class="text-2xl font-semibold mb-4">Launcher Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-gray-100 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+                        role="listitem">
+                        <h3 class="text-xl font-semibold mb-2">Custom Mods</h3>
+                        <p class="text-gray-700">
+                            Personalize your game with a selection of mods tailored just for
+                            you.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+                        role="listitem">
+                        <h3 class="text-xl font-semibold mb-2">Performance Faster Than Official MC Launcher</h3>
+                        <p class="text-gray-700">
+                            Experience faster performance compared to the official Minecraft launcher.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+                        role="listitem">
+                        <h3 class="text-xl font-semibold mb-2">Download Speed</h3>
+                        <p class="text-gray-700">
+                            Enjoy improved download speeds for a seamless gaming experience.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+                        role="listitem">
+                        <h3 class="text-xl font-semibold mb-2">Specially Made for Hypixel SkyBlock</h3>
+                        <p class="text-gray-700">
+                            Designed to enhance your gameplay experience in Hypixel's SkyBlock.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+                        role="listitem">
+                        <h3 class="text-xl font-semibold mb-2">Trusted Modpacks/Mods</h3>
+                        <p class="text-gray-700">
+                            Curated selection of trusted modpacks and mods for a secure gaming environment.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+                        role="listitem">
+                        <h3 class="text-xl font-semibold mb-2">File Check on Launch</h3>
+                        <p class="text-gray-700">
+                            Ensures file integrity before game launch to prevent corruption issues.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+                        role="listitem">
+                        <h3 class="text-xl font-semibold mb-2">Add Your Own Mods</h3>
+                        <p class="text-gray-700">
+                            Drag-and-drop functionality to upload your custom mods.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+                        role="listitem">
+                        <h3 class="text-xl font-semibold mb-2">Toggle Mods On/Off</h3>
+                        <p class="text-gray-700">
+                            Enable or disable mods with a simple toggle switch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-blue-500 text-white py-4" role="contentinfo">
+            <div class="container mx-auto text-center">
+                &copy; 2023 Shiny Launcher. All rights reserved.
+            </div>
+        </footer>
+    </div>
+    <script>
+        fetch('https://api.github.com/repos/ShinyClient/Shiny/releases/latest')
+            .then(response => response.json())
+            .then(data => {
+                const latestVersion = document.getElementById('latestVersion');
+                const downloadButton = document.getElementById('downloadButton');
+                if (latestVersion && downloadButton && data && data.tag_name) {
+                    latestVersion.innerHTML = `Latest Version: ${data.tag_name}`;
+                    downloadButton.href = `https://github.com/ShinyClient/Shiny/releases/download/${data.tag_name}/Shiny-${data.tag_name.slice(1)}.exe`;
+                } else {
+                    latestVersion.textContent = 'Latest Version: Not Available';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                const latestVersion = document.getElementById('latestVersion');
+                if (latestVersion) {
+                    latestVersion.textContent = 'Latest Version: Not Available';
+                }
+            });
+    </script>
+</body>
+
+</html>
